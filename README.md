@@ -4,14 +4,14 @@
 
 If you are having a structure like the following in your mongodb it is pretty bad to handle, since spring-data-mongodb does not support multi tenancy.
 
-        CUSTOMER_DB_A #
-          - collectionA
-          - collectionB
-          - collectionC
-        CUSTOMER_DB_B #
-          - collectionA
-          - collectionB
-          - collectionC
+        CUSTOMER_DB_ORGANISATION1 #
+          - collectionX
+          - collectionY
+          - collectionZ
+        CUSTOMER_DB_ORGANISATION2
+          - collectionX
+          - collectionY
+          - collectionZ
   
 the data structure in these collections is the same, every customer does just have its own database in one mongodb instance.
 
