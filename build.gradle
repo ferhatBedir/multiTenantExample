@@ -31,6 +31,10 @@ dependencies {
 	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.16.20'
 	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'
 	compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.3'
+	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+	compile group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
+
 
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')

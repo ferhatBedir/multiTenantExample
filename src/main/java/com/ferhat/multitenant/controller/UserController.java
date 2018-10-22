@@ -1,10 +1,10 @@
 package com.ferhat.multitenant.controller;
 
-import com.ferhat.multitenant.entity.User;
 import com.ferhat.multitenant.exceptions.ExceptionMessage;
 import com.ferhat.multitenant.exceptions.InvalidParametersException;
 import com.ferhat.multitenant.model.UserModel;
 import com.ferhat.multitenant.service.UserService;
+import io.swagger.annotations.Api;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
+@Api(tags = "User Controller")
 public class UserController {
 
     private UserService userService;
