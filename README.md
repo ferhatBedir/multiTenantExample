@@ -2,6 +2,19 @@
 
 <h3>Where use Multi Tenant ?</h3>
 
+If you are having a structure like the following in your mongodb it is pretty bad to handle, since spring-data-mongodb does not support multi tenancy.
+
+        CUSTOMER_DB_A #
+          - collectionA
+          - collectionB
+          - collectionC
+        CUSTOMER_DB_B #
+          - collectionA
+          - collectionB
+          - collectionC
+  
+the data structure in these collections is the same, every customer does just have its own database in one mongodb instance.
+
 <hr/>
 
 <h3>How to run the application ?</h3>
