@@ -15,6 +15,12 @@ If you are having a structure like the following in your mongodb it is pretty ba
   
 the data structure in these collections is the same, every customer does just have its own database in one mongodb instance.
 
+The software designed according to this architecture aims to provide services to many firms or organizations (tenant-tenants) 
+
+using a single software code. The main challenge here is that these softwares can disrupt the virtual processes for each 
+
+organization they serve and allow them to make custom adaptations to these organizations.
+
 <hr/>
 
 <h3>How to run the application ?</h3>
