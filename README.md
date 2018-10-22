@@ -21,6 +21,14 @@ using a single software code. The main challenge here is that these softwares ca
 
 organization they serve and allow them to make custom adaptations to these organizations.
 
+
+The database name is sent in message in each request message. 
+
+The application takes the name of the database and connects to that database.
+
+See the MultiTenancyService class.
+
+
 <hr/>
 
 <h3>How to run the application ?</h3>
