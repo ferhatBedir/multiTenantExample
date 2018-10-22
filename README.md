@@ -1,6 +1,4 @@
-# MultiTenant Example
-
-MultiTenant with Mongo Db
+# MultiTenant with Mongo Db Example
 
 <h3>Where use Multi Tenant ?</h3>
 
