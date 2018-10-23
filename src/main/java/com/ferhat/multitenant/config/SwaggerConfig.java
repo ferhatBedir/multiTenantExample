@@ -28,16 +28,6 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo());
     }
 
-    @Bean
-    public Docket databaseApi(){
-        return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("databaseApi")
-                .select()
-                .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.ant("/database/**"))
-                .build()
-                .apiInfo(apiInfo());
-    }
 
     private ApiInfo apiInfo(){
         return new ApiInfo("MultiTenant Api", "MultiTenant Api App", "1.0.0",

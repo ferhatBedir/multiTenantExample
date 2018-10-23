@@ -2,6 +2,7 @@ package com.ferhat.multitenant.controller;
 
 import com.ferhat.multitenant.exceptions.ExceptionMessage;
 import com.ferhat.multitenant.exceptions.InvalidParametersException;
+import com.ferhat.multitenant.model.UserAddModel;
 import com.ferhat.multitenant.model.UserModel;
 import com.ferhat.multitenant.service.UserService;
 import io.swagger.annotations.Api;
@@ -23,11 +24,12 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public void addUserToDb(@RequestBody UserModel userModel, BindingResult bindingResult) throws InvocationTargetException, IllegalAccessException {
+    public void addUserToDb(@RequestBody UserAddModel userAddModel, BindingResult bindingResult)
+            throws InvocationTargetException, IllegalAccessException {
         if (bindingResult.hasErrors()) {
             throw new InvalidParametersException(ExceptionMessage.INVALID_PARAMETERS);
         }
-        userService.addUser(userModel);
+        userService.addUser(userAddModel);
     }
 
     @GetMapping("/findall")
@@ -37,7 +39,7 @@ public class UserController {
 
     @GetMapping("/findlastname")
     public List<UserModel> findUserSameLastName(@RequestParam(value = "lastname") String lastName,
-                                                @RequestParam(value = "dbname") String databaseName) {
+                                                   @RequestParam(value = "dbname") String databaseName) {
         return userService.findUser(lastName, databaseName);
     }
 

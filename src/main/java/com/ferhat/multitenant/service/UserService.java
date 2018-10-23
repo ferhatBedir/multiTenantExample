@@ -1,13 +1,12 @@
 package com.ferhat.multitenant.service;
 
 
-import com.ferhat.multitenant.config.MultiTenancyService;
-import com.ferhat.multitenant.entity.Database;
+import com.ferhat.multitenant.TenantContext;
 import com.ferhat.multitenant.entity.User;
 import com.ferhat.multitenant.exceptions.ExceptionMessage;
 import com.ferhat.multitenant.exceptions.InvalidParametersException;
+import com.ferhat.multitenant.model.UserAddModel;
 import com.ferhat.multitenant.model.UserModel;
-import com.ferhat.multitenant.repository.DatabaseRepository;
 import com.ferhat.multitenant.repository.UserRepository;
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -20,18 +19,14 @@ import java.util.List;
 public class UserService {
 
     private UserRepository userRepository;
-    private MultiTenancyService multiTenancyService;
-    private DatabaseRepository databaseRepository;
 
-    public UserService(UserRepository userRepository, MultiTenancyService multiTenancyService, DatabaseRepository databaseRepository) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.multiTenancyService = multiTenancyService;
-        this.databaseRepository = databaseRepository;
     }
 
-    public void addUser(UserModel userModel) throws InvocationTargetException, IllegalAccessException {
-        multiTenancyService.setTenant(userModel.getDatabaseName());
-        User user = toUser(userModel);
+    public void addUser(UserAddModel userAddModel) throws InvocationTargetException, IllegalAccessException {
+        TenantContext.setTenant(userAddModel.getDatabaseName());
+        User user = toUser(userAddModel);
         if (user == null) {
             throw new InvalidParametersException(ExceptionMessage.INVALID_PARAMETERS);
         }
@@ -39,20 +34,20 @@ public class UserService {
     }
 
     public List<UserModel> findAll(String databaseName) {
-        multiTenancyService.setTenant(databaseName);
+        TenantContext.setTenant(databaseName);
         List<User> users = userRepository.findAll();
         return toUserModel(users);
     }
 
     public List<UserModel> findUser(String lastName, String databaseName) {
-        multiTenancyService.setTenant(databaseName);
+        TenantContext.setTenant(databaseName);
         List<User> users = userRepository.findByUserLastNameEqualsIgnoreCase(lastName);
         return toUserModel(users);
     }
 
-    private User toUser(UserModel userModel) throws InvocationTargetException, IllegalAccessException {
+    private User toUser(UserAddModel userAddModel) throws InvocationTargetException, IllegalAccessException {
         User user = new User();
-        BeanUtils.copyProperties(user, userModel);
+        BeanUtils.copyProperties(user, userAddModel);
         return user;
     }
 
