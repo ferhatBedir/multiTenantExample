@@ -43,13 +43,17 @@ See the MultiTenancyService class.
 
    * Send Request
    
-      When register user, you send database name. For Example : (http://localhost:8888/user/add)
+      When register user, you send database name. 
+      
+      	For Example : Request Body 
       
                * {
 	                "userName" :"firstNameUser",
 	                "userLastName" : "LastNameUser",
 	                "databaseName" : "dbname"
                 }
+		
+		Address : http://localhost:8888/user/add 
    
       Swagger address : http://localhost:8888/swagger-ui.html
       
