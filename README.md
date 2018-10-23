@@ -43,9 +43,13 @@ See the MultiTenancyService class.
 
    * Send Request
    
-      First, a few databases must be added to the application. (http://localhost:8888/database/add)
+      when register user, you send database name. For Example : (http://localhost:8888/user/add)
       
-      You should add Users to Databases. (http://localhost:8888/user/add)
+               * {
+	                "userName" :"firstNameUser",
+	                "userLastName" : "LastNameUser",
+	                "databaseName" : "dbname"
+                }
    
       Swagger address : http://localhost:8888/swagger-ui.html
       
