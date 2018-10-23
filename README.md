@@ -43,7 +43,7 @@ See the MultiTenancyService class.
 
    * Send Request
    
-      when register user, you send database name. For Example : (http://localhost:8888/user/add)
+      When register user, you send database name. For Example : (http://localhost:8888/user/add)
       
                * {
 	                "userName" :"firstNameUser",
